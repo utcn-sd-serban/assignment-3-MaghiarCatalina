@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "3fd045c5-0426-44ed-bdcf-4a83fa7cbe56",
+		"name": "postman_test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-view-all-questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ecd5636-c31a-48b1-b265-ebaf27309260",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Question list greater than 2\", function(){",
+							"\tvar questions = pm.response.json();",
+							"\tpm.expect(questions.length).to.be.gt(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Cata",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/view-all-questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"view-all-questions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get-view-all-questions",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/view-all-questions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"view-all-questions"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 26 May 2019 21:22:33 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"author\": \"Cata\",\n        \"title\": \"aaa\",\n        \"text\": \"aaa\",\n        \"date\": \"2019-05-26T21:51:03.304351100\",\n        \"tags\": \" aaa\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"tt\",\n        \"text\": \"tt\",\n        \"date\": \"2019-05-26T21:18:24.877696900\",\n        \"tags\": \" tag1 tag2\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"titlu\",\n        \"text\": \"titlu\",\n        \"date\": \"2019-05-26T21:16:25.080550500\",\n        \"tags\": \" t\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"aa\",\n        \"text\": \"aa\",\n        \"date\": \"2019-05-26T18:21:06.552025600\",\n        \"tags\": \"\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"cnskdnvks\",\n        \"text\": \"cnskdnvks\",\n        \"date\": \"2019-05-26T13:13:34.543689400\",\n        \"tags\": \" spring\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"ceva titlu\",\n        \"text\": \"ceva titlu\",\n        \"date\": \"2019-05-26T01:07:30.642015800\",\n        \"tags\": \" java spring\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"help\",\n        \"text\": \"how to breathe\",\n        \"date\": \"2019-05-06\",\n        \"tags\": \" java\"\n    },\n    {\n        \"author\": \"Cata\",\n        \"title\": \"un titlu\",\n        \"text\": \"un text\",\n        \"date\": \"2019-05-05\",\n        \"tags\": \" tag1\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "get-filter-by-title",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6e0449f-0a47-425c-9547-f2c2609985ea",
+						"exec": [
+							"pm.test(\"Response status is OK\", function(){\r",
+							"\tpm.response.to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Only one matching question\", function(){\r",
+							"\tvar questions = pm.response.json();\r",
+							"\tpm.expect(questions.length).to.be.equal(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Cata",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/title-search/ceva",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"title-search",
+						"ceva"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-filter-by-tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "82dab2b9-ce17-4c36-845f-66dbc33cbd5f",
+						"exec": [
+							"pm.test(\"Response status is OK\", function(){\r",
+							"\tpm.response.to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Two matching questions found\", function(){\r",
+							"\tvar questions = pm.response.json();\r",
+							"\tpm.expect(questions.length).to.be.equal(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Cata",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/tag-search/java",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tag-search",
+						"java"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post-create-question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2391a3cd-02f3-48a2-9e3f-68024fde9831",
+						"exec": [
+							"pm.test(\"Response status is OK\", function(){\r",
+							"\tpm.response.to.be.ok;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "Cata",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"author\": \"Cata\",\r\n  \"tags\": \"tag1\",\r\n  \"text\": \"text1\",\r\n  \"title\": \"titlu1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/home",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"home"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "1234",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "Cata",
+				"type": "string"
+			}
+		]
+	}
+}
